@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YALI Alumni Summit 2025 - Inscription Volontaire</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --yali-blue: #00A3E0;
+            --yali-red: #E31837;
+            --yali-dark-blue: #005678;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Funnel Display', sans-serif;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: var(--yali-blue);
+            padding: 1.5rem;
+            border-bottom: none;
+        }
+
+        .header-content {
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .btn-primary {
+            background-color: var(--yali-blue);
+            border-color: var(--yali-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--yali-dark-blue);
+            border-color: var(--yali-dark-blue);
+        }
+
+        .btn-outline-primary {
+            color: var(--yali-blue);
+            border-color: var(--yali-blue);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--yali-blue);
+            border-color: var(--yali-blue);
+        }
+
+        .text-primary {
+            color: var(--yali-blue) !important;
+        }
+
+        .form-control:focus {
+            border-color: var(--yali-blue);
+            box-shadow: 0 0 0 0.25rem rgba(0, 163, 224, 0.25);
+        }
+
+        .committee-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+        }
+
+        .committee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            color: var(--yali-blue);
+        }
+
+        .summit-info {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Funnel Display', sans-serif;
+            font-weight: 700;
+        }
+
+        .card-header h2 {
+            font-weight: 800;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                width: 80px;
+                height: 80px;
+                top: -40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header text-white text-center">
+                        <div class="logo-container mb-3">
+                            <img src="logo_yali.png" alt="YALI Alumni Summit Logo">
+                        </div>
+                        <div class="header-content">
+                            <h2 class="mb-2">Devenez Volontaire</h2>
+                            <p class="mb-1 summit-info">Alumni Summit 2025 - Bénin</p>
+                            <p class="small text-white-50 px-3">Inspirer l'Afrique de Demain : Leadership inclusif, Paix, Innovation et Technologie pour une Croissance Durable</p>
+                        </div>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <div class="row row-cols-3 g-2 mb-4 text-center">
+                            <div class="col">
+                                <div class="bg-light rounded p-2">
+                                    <i class="bi bi-people text-primary fs-4 d-block mb-1"></i>
+                                    <small class="d-block">Communauté</small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="bg-light rounded p-2">
+                                    <i class="bi bi-star text-primary fs-4 d-block mb-1"></i>
+                                    <small class="d-block">Expérience</small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="bg-light rounded p-2">
+                                    <i class="bi bi-heart text-primary fs-4 d-block mb-1"></i>
+                                    <small class="d-block">Impact</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="submit-to-google-sheet" class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom" required>
+                                        <label for="name">Nom et Prénom</label>
+                                        <div class="invalid-feedback">
+                                            Veuillez entrer votre nom complet
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="nom@exemple.com" required>
+                                        <label for="email">Adresse Email</label>
+                                        <div class="invalid-feedback">
+                                            Veuillez entrer une adresse email valide
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Téléphone" required>
+                                        <label for="phone">Numéro de Téléphone</label>
+                                        <div class="invalid-feedback">
+                                            Veuillez entrer votre numéro de téléphone
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="mb-4">
+                                        <label class="form-label d-block mb-3">Genre</label>
+                                        <div class="d-flex gap-4 justify-content-center">
+                                            <div class="text-center">
+                                                <input type="radio" class="btn-check" name="gender" id="male" value="male" required>
+                                                <label class="btn btn-outline-primary d-flex flex-column align-items-center p-3" for="male">
+                                                    <i class="bi bi-gender-male h4 mb-0 me-2"></i>
+                                                    <span class="mt-2">Homme</span>
+                                                </label>
+                                            </div>
+                                            <div class="text-center">
+                                                <input type="radio" class="btn-check" name="gender" id="female" value="female" required>
+                                                <label class="btn btn-outline-primary d-flex flex-column align-items-center p-3" for="female">
+                                                    <i class="bi bi-gender-female h4 mb-0 me-2"></i>
+                                                    <span class="mt-2">Femme</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="invalid-feedback text-center mt-2">
+                                            Veuillez sélectionner votre genre
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="mb-4">
+                                        <label class="form-label mb-3">Dans quel commité souhaitez-vous travailler ?</label>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <input type="radio" class="btn-check" name="committee" id="secretariat" value="secretariat" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="secretariat">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="bi bi-file-text h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Secrétariat</h5>
+                                                    </div>
+                                                    <p class="small text-start mb-2">Gestion administrative, coordination des documents et support organisationnel.</p>
+                                                    <div class="small text-start">
+                                                        <strong>Avantages :</strong>
+                                                        <ul class="mb-0 ps-3">
+                                                            <li>Développement des compétences administratives</li>
+                                                            <li>Expérience en gestion documentaire</li>
+                                                        </ul>
+                                                    </div>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <input type="radio" class="btn-check" name="committee" id="logistique" value="logistique" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="logistique">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="bi bi-truck h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Logistique</h5>
+                                                    </div>
+                                                    <p class="small text-start mb-2">Planification et gestion des ressources matérielles et humaines.</p>
+                                                    <div class="small text-start">
+                                                        <strong>Avantages :</strong>
+                                                        <ul class="mb-0 ps-3">
+                                                            <li>Expérience en gestion d'événements</li>
+                                                            <li>Développement de compétences organisationnelles</li>
+                                                        </ul>
+                                                    </div>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <input type="radio" class="btn-check" name="committee" id="communication" value="communication" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="communication">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="bi bi-megaphone h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Communication</h5>
+                                                    </div>
+                                                    <p class="small text-start mb-2">Gestion des relations publiques et de la stratégie de communication.</p>
+                                                    <div class="small text-start">
+                                                        <strong>Avantages :</strong>
+                                                        <ul class="mb-0 ps-3">
+                                                            <li>Développement des compétences en communication</li>
+                                                            <li>Expérience en relations publiques</li>
+                                                        </ul>
+                                                    </div>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <input type="radio" class="btn-check" name="committee" id="organisation" value="organisation" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="organisation">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="bi bi-calendar-event h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Organisation</h5>
+                                                    </div>
+                                                    <p class="small text-start mb-2">Planification et coordination des événements et activités.</p>
+                                                    <div class="small text-start">
+                                                        <strong>Avantages :</strong>
+                                                        <ul class="mb-0 ps-3">
+                                                            <li>Expérience en gestion de projet</li>
+                                                            <li>Développement du leadership</li>
+                                                        </ul>
+                                                    </div>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <input type="radio" class="btn-check" name="committee" id="design" value="design" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="design">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="bi bi-brush h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Design et branding</h5>
+                                                    </div>
+                                                    <p class="small text-start mb-2">Création de l'identité visuelle et des supports de communication.</p>
+                                                    <div class="small text-start">
+                                                        <strong>Avantages :</strong>
+                                                        <ul class="mb-0 ps-3">
+                                                            <li>Portfolio de créations</li>
+                                                            <li>Expérience en design professionnel</li>
+                                                        </ul>
+                                                    </div>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <input type="radio" class="btn-check" name="committee" id="web" value="web" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="web">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="bi bi-laptop h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Site web et inscription</h5>
+                                                    </div>
+                                                    <p class="small text-start mb-2">Développement et maintenance de la plateforme web.</p>
+                                                    <div class="small text-start">
+                                                        <strong>Avantages :</strong>
+                                                        <ul class="mb-0 ps-3">
+                                                            <li>Expérience en développement web</li>
+                                                            <li>Gestion de projet technique</li>
+                                                        </ul>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="invalid-feedback text-center mt-2">
+                                            Veuillez sélectionner un comité
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" id="message" name="message" style="height: 100px" required></textarea>
+                                        <label for="message">Quelle est votre motivation pour cette opportunité ?</label>
+                                        <div class="invalid-feedback">
+                                            Veuillez partager votre motivation
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="age" required>
+                                        <label class="form-check-label" for="age">
+                                            Je confirme être majeur(e) (plus de 18 ans)
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            Vous devez confirmer être majeur
+                                        </div>
+                                    </div>
+
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="consent" required>
+                                        <label class="form-check-label" for="consent">
+                                            J'accepte que mes données soient utilisées dans le cadre de cet événement
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            Vous devez accepter les conditions
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">
+                                        <i class="bi bi-send me-2"></i>Je m'inscris comme volontaire
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card-footer bg-light border-0 py-5">
+                        <div class="container">
+                            <div class="row gy-4 align-items-center">
+                                <div class="col-md-4 text-center">
+                                    <div class="footer-logo mb-3">
+                                        <img src="logo_yali.png" alt="YALI Logo" class="img-fluid" style="max-height: 80px;">
+                                    </div>
+                                    <h5 class="text-primary mb-2">BYAA</h5>
+                                    <p class="text-muted small">Benin Yali Alumni Association</p>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="contact-info">
+                                        <h6 class="text-primary mb-3">Contactez-nous</h6>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">
+                                                <i class="bi bi-telephone-fill text-primary me-2"></i>
+                                                <span>(229) 67 15 39 74</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="bi bi-envelope-fill text-primary me-2"></i>
+                                                <a href="mailto:beninyalialumni@gmail.com" class="text-decoration-none text-dark">
+                                                    beninyalialumni@gmail.com
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                                                <span>Cotonou, Bénin</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="social-links text-center">
+                                        <h6 class="text-primary mb-3">Suivez-nous</h6>
+                                        <div class="d-flex justify-content-center gap-3">
+                                            <a href="#" class="text-primary">
+                                                <i class="bi bi-facebook fs-4"></i>
+                                            </a>
+                                            <a href="#" class="text-primary">
+                                                <i class="bi bi-twitter fs-4"></i>
+                                            </a>
+                                            <a href="#" class="text-primary">
+                                                <i class="bi bi-linkedin fs-4"></i>
+                                            </a>
+                                            <a href="#" class="text-primary">
+                                                <i class="bi bi-instagram fs-4"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12 text-center mt-4 pt-3 border-top">
+                                    <p class="text-muted small mb-0">
+                                        &copy; 2025 YALI Alumni Summit Bénin. Tous droits réservés.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script>
+        (() => {
+            'use strict'
+            
+            // Custom validation functions
+            const validateBeninPhoneNumber = (phoneNumber) => {
+                // Benin phone number validation
+                // Starts with +229, followed by 8 digits
+                const beninPhoneRegex = /^\+229\d{8}$/;
+                return beninPhoneRegex.test(phoneNumber);
+            }
+
+            const validateBeninEmail = (email) => {
+                // Email validation specific to Benin domains
+                const beninEmailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|hotmail\.com|outlook\.com|byaa\.bj|yali\.bj)$/;
+                return beninEmailRegex.test(email);
+            }
+
+            // Add custom validation to phone number field
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('input', function(event) {
+                if (!validateBeninPhoneNumber(this.value)) {
+                    this.setCustomValidity('Veuillez entrer un numéro de téléphone béninois valide (+229xxxxxxxx)');
+                } else {
+                    this.setCustomValidity('');
+                }
+            });
+
+            // Add custom validation to email field
+            const emailInput = document.getElementById('email');
+            emailInput.addEventListener('input', function(event) {
+                if (!validateBeninEmail(this.value)) {
+                    this.setCustomValidity('Veuillez entrer une adresse email valide (domaines béninois ou courants)');
+                } else {
+                    this.setCustomValidity('');
+                }
+            });
+
+            // Bootstrap form validation
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+        const form = document.getElementById('submit-to-google-sheet');
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwW6WF6Ro4lkFEwqKQIkGzhnpIHkCjk9LFl8jv0olZs7JJUZ4E5rikd4SMsv1b__gUj/exec";
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            if (!form.checkValidity()) return;
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Envoi en cours...';
+
+            const formData = new FormData(form);
+            formData.append('age', document.getElementById('age').checked ? 'Yes' : 'No');
+            formData.append('consent', document.getElementById('consent').checked ? 'Yes' : 'No');
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    swal({
+                        title: "Merci !",
+                        text: "Votre inscription a été enregistrée avec succès.",
+                        icon: "success",
+                        button: "D'accord"
+                    });
+                    form.reset();
+                    form.classList.remove('was-validated');
+                })
+                .catch(error => {
+                    swal({
+                        title: "Erreur",
+                        text: "Un problème est survenu. Veuillez réessayer.",
+                        icon: "error",
+                        button: "D'accord"
+                    });
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                });
+        });
+    </script>
+</body>
+</html>

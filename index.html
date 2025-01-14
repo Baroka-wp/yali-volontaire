@@ -185,11 +185,27 @@
 
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Téléphone" required>
-                                        <label for="phone">Numéro de Téléphone</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+229 01 67 15 39 74" required>
+                                        <label for="phone">Numéro de téléphone</label>
                                         <div class="invalid-feedback">
                                             Veuillez entrer votre numéro de téléphone
                                         </div>
+                                        <small class="form-text text-muted">
+                                            <i class="bi bi-phone text-success me-1"></i>Avec l'indicatif (ex: +229 01 67 15 39 74)
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="+229 01 67 15 39 74">
+                                        <label for="whatsapp">Numéro WhatsApp (Optionnel)</label>
+                                        <div class="invalid-feedback">
+                                            Veuillez entrer un numéro WhatsApp valide
+                                        </div>
+                                        <small class="form-text text-muted">
+                                            <i class="bi bi-whatsapp text-success me-1"></i>Laissez vide si identique au numéro de téléphone(ex: +229 67 15 39 74)
+                                        </small>
                                     </div>
                                 </div>
 
@@ -453,7 +469,7 @@
             const validateBeninPhoneNumber = (phoneNumber) => {
                 // Benin phone number validation
                 // Starts with +229, followed by 8 digits
-                const beninPhoneRegex = /^\+229\d{8}$/;
+                const beninPhoneRegex = /^\+229\d{10}$/;
                 return beninPhoneRegex.test(phoneNumber);
             }
 
@@ -467,7 +483,7 @@
             const phoneInput = document.getElementById('phone');
             phoneInput.addEventListener('input', function(event) {
                 if (!validateBeninPhoneNumber(this.value)) {
-                    this.setCustomValidity('Veuillez entrer un numéro de téléphone béninois valide (+229xxxxxxxx)');
+                    this.setCustomValidity('Veuillez entrer un numéro de téléphone béninois valide (+22901xxxxxxxx)');
                 } else {
                     this.setCustomValidity('');
                 }
@@ -482,6 +498,22 @@
                     this.setCustomValidity('');
                 }
             });
+
+            // Add custom validation to WhatsApp number field
+            const whatsappInput = document.getElementById('whatsapp');
+            // whatsappInput.addEventListener('input', function(event) {
+            //     // If WhatsApp number is provided, validate it
+            //     if (this.value.trim() !== '') {
+            //         if (!validateBeninPhoneNumber(this.value)) {
+            //             this.setCustomValidity('Veuillez entrer un numéro WhatsApp béninois valide (+229xxxxxxxx)');
+            //         } else {
+            //             this.setCustomValidity('');
+            //         }
+            //     } else {
+            //         // If left empty, it's valid
+            //         this.setCustomValidity('');
+            //     }
+            // });
 
             // Bootstrap form validation
             const forms = document.querySelectorAll('.needs-validation')
@@ -510,9 +542,22 @@
             const formData = new FormData(form);
             formData.append('age', document.getElementById('age').checked ? 'Yes' : 'No');
             formData.append('consent', document.getElementById('consent').checked ? 'Yes' : 'No');
+            
+            // Add WhatsApp number if provided
+            const whatsappInput = document.getElementById('whatsapp');
+            if (whatsappInput.value.trim() !== '') {
+                formData.append('whatsapp', whatsappInput.value.trim());
+            }
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
+                    const userData = {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        committee: document.querySelector('input[name="committee"]:checked').value,
+                        phone: formData.get('phone'),
+                        whatsapp: formData.get('whatsapp') || 'Non spécifié'
+                    };
                     swal({
                         title: "Merci !",
                         text: "Votre inscription a été enregistrée avec succès.",

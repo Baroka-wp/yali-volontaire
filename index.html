@@ -235,24 +235,91 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-12">
+                                    <div class="mb-4">
+                                        <label class="form-label mb-3">Lieu de résidence</label>
+                                        <input type="text" class="form-control" name="residence" placeholder="Ville, Pays" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="mb-4">
+                                        <label class="form-label mb-3">Êtes-vous un alumni YALI ?</label>
+                                        <div class="btn-group w-100" role="group" aria-label="YALI Alumni Status">
+                                            <input type="radio" class="btn-check" name="yali_alumni" id="yali_alumni_yes" value="yes" required>
+                                            <label class="btn btn-outline-primary" for="yali_alumni_yes">Oui</label>
+
+                                            <input type="radio" class="btn-check" name="yali_alumni" id="yali_alumni_no" value="no" required>
+                                            <label class="btn btn-outline-primary" for="yali_alumni_no">Non</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12" id="yali_section_container" style="display: none;">
+                                    <div class="mb-4">
+                                        <label class="form-label mb-3">Quelle section YALI ?</label>
+                                        <input type="text" class="form-control" name="yali_section" id="yali_section" placeholder="Ex: Section 8, CRL en ligne" required>
+                                    </div>
+                                </div>
+
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const yaliAlumniYes = document.getElementById('yali_alumni_yes');
+                                        const yaliAlumniNo = document.getElementById('yali_alumni_no');
+                                        const yaliSectionContainer = document.getElementById('yali_section_container');
+                                        const yaliSectionInput = document.getElementById('yali_section');
+
+                                        function toggleYaliSection() {
+                                            if (yaliAlumniYes.checked) {
+                                                yaliSectionContainer.style.display = 'block';
+                                                yaliSectionInput.required = true;
+                                            } else {
+                                                yaliSectionContainer.style.display = 'none';
+                                                yaliSectionInput.required = false;
+                                                yaliSectionInput.value = '';
+                                            }
+                                        }
+
+                                        yaliAlumniYes.addEventListener('change', toggleYaliSection);
+                                        yaliAlumniNo.addEventListener('change', toggleYaliSection);
+                                    });
+                                </script>
 
                                 <div class="col-12">
                                     <div class="mb-4">
                                         <label class="form-label mb-3">Dans quel section souhaitez-vous travailler ?</label>
                                         <div class="row g-3">
                                             <div class="col-md-6">
-                                                <input type="radio" class="btn-check" name="committee" id="secretariat" value="secretariat" required>
-                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="secretariat">
+                                                <input type="radio" class="btn-check" name="committee" id="finance" value="finance" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="finance">
                                                     <div class="d-flex align-items-center mb-2">
-                                                        <i class="bi bi-file-text h4 mb-0 me-2"></i>
-                                                        <h5 class="mb-0">Secrétariat</h5>
+                                                        <i class="bi bi-currency-dollar h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Finance</h5>
                                                     </div>
-                                                    <p class="small text-start mb-2">Gestion administrative, coordination des documents et support organisationnel.</p>
+                                                    <p class="small text-start mb-2">Gestion financière et budgétaire de l'organisation.</p>
                                                     <div class="small text-start">
                                                         <strong>Avantages :</strong>
                                                         <ul class="mb-0 ps-3">
-                                                            <li>Développement des compétences administratives</li>
-                                                            <li>Expérience en gestion documentaire</li>
+                                                            <li>Compétences en gestion financière</li>
+                                                            <li>Expérience en planification budgétaire</li>
+                                                        </ul>
+                                                    </div>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <input type="radio" class="btn-check" name="committee" id="mobilisation" value="mobilisation" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="mobilisation">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="bi bi-people h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Mobilisation et relation Extérieur</h5>
+                                                    </div>
+                                                    <p class="small text-start mb-2">Développement des partenariats et mobilisation des ressources.</p>
+                                                    <div class="small text-start">
+                                                        <strong>Avantages :</strong>
+                                                        <ul class="mb-0 ps-3">
+                                                            <li>Développement des compétences en networking</li>
+                                                            <li>Expérience en relations partenariales</li>
                                                         </ul>
                                                     </div>
                                                 </label>
@@ -265,12 +332,30 @@
                                                         <i class="bi bi-truck h4 mb-0 me-2"></i>
                                                         <h5 class="mb-0">Logistique</h5>
                                                     </div>
-                                                    <p class="small text-start mb-2">Planification et gestion des ressources matérielles et humaines.</p>
+                                                    <p class="small text-start mb-2">Planification et gestion des ressources matérielles.</p>
                                                     <div class="small text-start">
                                                         <strong>Avantages :</strong>
                                                         <ul class="mb-0 ps-3">
-                                                            <li>Expérience en gestion d'événements</li>
-                                                            <li>Développement de compétences organisationnelles</li>
+                                                            <li>Compétences en gestion opérationnelle</li>
+                                                            <li>Expérience en coordination logistique</li>
+                                                        </ul>
+                                                    </div>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <input type="radio" class="btn-check" name="committee" id="evenementiel" value="evenementiel" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="evenementiel">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="bi bi-calendar-event h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Événementiel</h5>
+                                                    </div>
+                                                    <p class="small text-start mb-2">Conception et organisation des événements.</p>
+                                                    <div class="small text-start">
+                                                        <strong>Avantages :</strong>
+                                                        <ul class="mb-0 ps-3">
+                                                            <li>Compétences en gestion de projet</li>
+                                                            <li>Créativité événementielle</li>
                                                         </ul>
                                                     </div>
                                                 </label>
@@ -283,67 +368,84 @@
                                                         <i class="bi bi-megaphone h4 mb-0 me-2"></i>
                                                         <h5 class="mb-0">Communication</h5>
                                                     </div>
-                                                    <p class="small text-start mb-2">Gestion des relations publiques et de la stratégie de communication.</p>
+                                                    <p class="small text-start mb-2">Stratégie de communication et relations publiques.</p>
                                                     <div class="small text-start">
                                                         <strong>Avantages :</strong>
                                                         <ul class="mb-0 ps-3">
-                                                            <li>Développement des compétences en communication</li>
-                                                            <li>Expérience en relations publiques</li>
+                                                            <li>Développement des compétences médiatiques</li>
+                                                            <li>Expérience en communication stratégique</li>
                                                         </ul>
                                                     </div>
                                                 </label>
                                             </div>
 
                                             <div class="col-md-6">
-                                                <input type="radio" class="btn-check" name="committee" id="organisation" value="organisation" required>
-                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="organisation">
+                                                <input type="radio" class="btn-check" name="committee" id="communautaire" value="communautaire" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="communautaire">
                                                     <div class="d-flex align-items-center mb-2">
-                                                        <i class="bi bi-calendar-event h4 mb-0 me-2"></i>
-                                                        <h5 class="mb-0">Organisation</h5>
+                                                        <i class="bi bi-heart-fill h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Activité communnautaire</h5>
                                                     </div>
-                                                    <p class="small text-start mb-2">Mobiliser les participants, Planification et coordination des événements et activités.</p>
+                                                    <p class="small text-start mb-2">Développement et animation des activités communautaires.</p>
                                                     <div class="small text-start">
                                                         <strong>Avantages :</strong>
                                                         <ul class="mb-0 ps-3">
-                                                            <li>Expérience en relation exterieur et Mobilisation</li>
-                                                            <li>Expérience en gestion de projet</li>
-                                                            <li>Développement du leadership</li>
+                                                            <li>Compétences en animation sociale</li>
+                                                            <li>Impact communautaire direct</li>
                                                         </ul>
                                                     </div>
                                                 </label>
                                             </div>
 
                                             <div class="col-md-6">
-                                                <input type="radio" class="btn-check" name="committee" id="design" value="design" required>
-                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="design">
+                                                <input type="radio" class="btn-check" name="committee" id="securite" value="securite" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="securite">
                                                     <div class="d-flex align-items-center mb-2">
-                                                        <i class="bi bi-brush h4 mb-0 me-2"></i>
-                                                        <h5 class="mb-0">Design et branding</h5>
+                                                        <i class="bi bi-shield-check h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Sécurité Santé et Hygiène</h5>
                                                     </div>
-                                                    <p class="small text-start mb-2">Création de l'identité visuelle et des supports de communication.</p>
+                                                    <p class="small text-start mb-2">Garantir la sécurité et le bien-être des participants.</p>
                                                     <div class="small text-start">
                                                         <strong>Avantages :</strong>
                                                         <ul class="mb-0 ps-3">
-                                                            <li>Portfolio de créations</li>
-                                                            <li>Expérience en design professionnel</li>
+                                                            <li>Compétences en gestion des risques</li>
+                                                            <li>Sensibilisation aux normes de sécurité</li>
                                                         </ul>
                                                     </div>
                                                 </label>
                                             </div>
 
                                             <div class="col-md-6">
-                                                <input type="radio" class="btn-check" name="committee" id="web" value="web" required>
-                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="web">
+                                                <input type="radio" class="btn-check" name="committee" id="scientifique" value="scientifique" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="scientifique">
                                                     <div class="d-flex align-items-center mb-2">
-                                                        <i class="bi bi-laptop h4 mb-0 me-2"></i>
-                                                        <h5 class="mb-0">Site web et inscription</h5>
+                                                        <i class="bi bi-lightbulb h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Scientifique</h5>
                                                     </div>
-                                                    <p class="small text-start mb-2">Développement et maintenance de la plateforme web.</p>
+                                                    <p class="small text-start mb-2">Recherche, innovation et développement scientifique.</p>
                                                     <div class="small text-start">
                                                         <strong>Avantages :</strong>
                                                         <ul class="mb-0 ps-3">
-                                                            <li>Expérience en développement web</li>
-                                                            <li>Gestion de projet technique</li>
+                                                            <li>Approfondissement des connaissances scientifiques</li>
+                                                            <li>Opportunités de recherche</li>
+                                                        </ul>
+                                                    </div>
+                                                </label>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <input type="radio" class="btn-check" name="committee" id="foire" value="foire" required>
+                                                <label class="btn btn-outline-primary w-100 h-100 p-3 d-flex flex-column" for="foire">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="bi bi-shop h4 mb-0 me-2"></i>
+                                                        <h5 class="mb-0">Foire</h5>
+                                                    </div>
+                                                    <p class="small text-start mb-2">Organisation et gestion des foires et expositions.</p>
+                                                    <div class="small text-start">
+                                                        <strong>Avantages :</strong>
+                                                        <ul class="mb-0 ps-3">
+                                                            <li>Expérience en organisation d'événements</li>
+                                                            <li>Compétences en gestion commerciale</li>
                                                         </ul>
                                                     </div>
                                                 </label>
@@ -357,14 +459,13 @@
 
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control" id="message" name="message" style="height: 100px" required></textarea>
+                                        <textarea class="form-control" id="message" name="message" style="height: 100px" placeholder="Je veux enrichir mon CV" required></textarea>
                                         <label for="message">Quelle est votre motivation pour cette opportunité ?</label>
                                         <div class="invalid-feedback">
                                             Veuillez partager votre motivation
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-12">
                                     <div class="form-check mb-3">
                                         <input class="form-check-input" type="checkbox" id="age" required>
@@ -484,13 +585,13 @@
 
             // Add custom validation to phone number field
             const phoneInput = document.getElementById('phone');
-            phoneInput.addEventListener('input', function(event) {
-                if (!validateBeninPhoneNumber(this.value)) {
-                    this.setCustomValidity('Veuillez entrer un numéro de téléphone béninois valide (+22901xxxxxxxx)');
-                } else {
-                    this.setCustomValidity('');
-                }
-            });
+            // phoneInput.addEventListener('input', function(event) {
+            //     if (!validateBeninPhoneNumber(this.value)) {
+            //         this.setCustomValidity('Veuillez entrer un numéro de téléphone béninois valide (+22901xxxxxxxx)');
+            //     } else {
+            //         this.setCustomValidity('');
+            //     }
+            // });
 
             // Add custom validation to email field
             const emailInput = document.getElementById('email');

@@ -1,19 +1,22 @@
 {
     "version": 2,
     "builds": [
-        {
-            "src": "index.html",
-            "use": "@vercel/static"
-        }
+      {
+        "src": "*.html",
+        "use": "@vercel/static"
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/index.html"
-        },
-        {
-            "src": "/profile(.*)",
-            "dest": "/profile/index.html"
-        }
-    ]
-}
+      {
+        "src": "/profile",
+        "dest": "/profile.html"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/$1"
+      }
+    ],
+    "buildCommand": false,
+    "devCommand": false,
+    "installCommand": false
+  }

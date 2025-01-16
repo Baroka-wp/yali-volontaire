@@ -10,6 +10,10 @@
         {
             "src": "/(.*)",
             "dest": "/index.html"
+        },
+        {
+            "src": "/profile(.*)",
+            "dest": "/profile/index.html"
         }
     ]
 }

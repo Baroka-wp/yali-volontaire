@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Volontaire - YALI Alumni Summit 2025</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --yali-blue: #00A3E0;
+            --yali-red: #E31837;
+            --yali-dark-blue: #005678;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+        }
+
+        .profile-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, var(--yali-blue), var(--yali-dark-blue));
+            padding: 2rem;
+            color: white;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            background: white;
+            padding: 3px;
+        }
+
+        .committee-badge {
+            background-color: var(--yali-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .info-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .verify-badge {
+            background: var(--yali-blue);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="profile-card">
+                    <div class="profile-header text-center">
+                        <img src="https://res.cloudinary.com/baroka/image/upload/v1736814367/01._YAS_Benin_2025_Blanc_V_ffyomp.png" alt="YALI Logo" class="profile-img mb-3">
+                        <h2 class="mb-1">
+                            <span id="userName">...</span>
+                            <span class="verify-badge">
+                                <i class="bi bi-check"></i>
+                            </span>
+                        </h2>
+                        <p class="committee-badge mt-2">
+                            <i class="bi bi-people me-2"></i>
+                            <span id="userCommittee">...</span>
+                        </p>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <h4 class="mb-4">Informations du Volontaire</h4>
+                        
+                        <div class="info-item">
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <span class="info-label">
+                                        <i class="bi bi-envelope me-2 text-primary"></i>Email
+                                    </span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="info-value" id="userEmail">...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <span class="info-label">
+                                        <i class="bi bi-phone me-2 text-primary"></i>Téléphone
+                                    </span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="info-value" id="userPhone">...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <span class="info-label">
+                                        <i class="bi bi-whatsapp me-2 text-primary"></i>WhatsApp
+                                    </span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="info-value" id="userWhatsapp">...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <span class="info-label">
+                                        <i class="bi bi-geo-alt me-2 text-primary"></i>Résidence
+                                    </span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="info-value" id="userResidence">...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <span class="info-label">
+                                        <i class="bi bi-person-badge me-2 text-primary"></i>Alumni YALI
+                                    </span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="info-value" id="userYaliStatus">...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-item" id="yaliSectionContainer" style="display: none;">
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <span class="info-label">
+                                        <i class="bi bi-mortarboard me-2 text-primary"></i>Session YALI
+                                    </span>
+                                </div>
+                                <div class="col-sm-8">
+                                    <span class="info-value" id="userYaliSection">...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-light border-0 p-4">
+                        <div class="text-center">
+                            <img src="https://res.cloudinary.com/baroka/image/upload/v1736845410/Logo_BYAA_idwrpc.jpg" alt="BYAA Logo" style="height: 60px;" class="mb-3">
+                            <p class="text-muted mb-0">Vérifié par BYAA - Benin Yali Alumni Association</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour récupérer les paramètres de l'URL
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                id: params.get('id')
+            };
+        }
+
+        // Fonction pour charger les données de l'utilisateur
+        async function loadUserData() {
+            const { id } = getUrlParams();
+            if (!id) return;
+
+            try {
+                // URL du script web Google Apps (à remplacer par l'URL de votre script déployé)
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbwW6WF6Ro4lkFEwqKQIkGzhnpIHkCjk9LFl8jv0olZs7JJUZ4E5rikd4SMsv1b__gUj/exec';
+                const response = await fetch(`${scriptUrl}?id=${id}`);
+                const data = await response.json();
+                
+                // Remplir les informations
+                document.getElementById('userName').textContent = data.name;
+                document.getElementById('userEmail').textContent = data.email;
+                document.getElementById('userPhone').textContent = data.phone;
+                document.getElementById('userWhatsapp').textContent = data.whatsapp || 'Non spécifié';
+                document.getElementById('userResidence').textContent = data.residence;
+                document.getElementById('userCommittee').textContent = data.committee;
+                document.getElementById('userYaliStatus').textContent = data.yali_alumni === 'yes' ? 'Oui' : 'Non';
+                
+                if (data.yali_alumni === 'yes' && data.yali_section) {
+                    document.getElementById('yaliSectionContainer').style.display = 'block';
+                    document.getElementById('userYaliSection').textContent = data.yali_section;
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement des données:', error);
+            }
+        }
+
+        // Charger les données au chargement de la page
+        document.addEventListener('DOMContentLoaded', loadUserData);
+    </script>
+</body>
+</html>

@@ -15,8 +15,5 @@
         "src": "/(.*)",
         "dest": "/$1"
       }
-    ],
-    "buildCommand": false,
-    "devCommand": false,
-    "installCommand": false
+    ]
   }

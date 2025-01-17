@@ -79,9 +79,102 @@
             justify-content: center;
             margin-left: 0.5rem;
         }
+
+        /* Loader styles */
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loader-wrapper {
+            position: relative;
+            width: 160px;
+            height: 160px;
+        }
+
+        .loader-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            animation: pulse 2s infinite;
+        }
+
+        .progress-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 160px;
+            height: 160px;
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring circle {
+            fill: none;
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+
+        .progress-ring-bg {
+            stroke: rgba(0, 163, 224, 0.2);
+        }
+
+        .progress-ring-circle {
+            stroke: var(--yali-blue);
+            stroke-dasharray: 452; /* 2 * π * (r=72) */
+            stroke-dashoffset: 452;
+            animation: progress 2s ease-out infinite;
+        }
+
+        .loader-text {
+            color: var(--yali-blue);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+
+        @keyframes progress {
+            0% {
+                stroke-dashoffset: 452;
+            }
+            50% {
+                stroke-dashoffset: 150;
+            }
+            100% {
+                stroke-dashoffset: 452;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
     </style>
 </head>
 <body class="py-5">
+    <div id="loader" class="loader-container">
+        <div class="loader-wrapper">
+            <svg class="progress-ring" viewBox="0 0 160 160">
+                <circle class="progress-ring-bg" cx="80" cy="80" r="72" />
+                <circle class="progress-ring-circle" cx="80" cy="80" r="72" />
+            </svg>
+            <img src="https://res.cloudinary.com/baroka/image/upload/v1736814367/01._YAS_Benin_2025_Blanc_V_ffyomp.png" alt="YALI Logo" class="loader-logo">
+        </div>
+        <div class="loader-text">Chargement du profil...</div>
+    </div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -205,13 +298,18 @@
         // Fonction pour charger les données de l'utilisateur
         async function loadUserData() {
             const { id } = getUrlParams();
-            if (!id) return;
+            if (!id) {
+                document.getElementById('loader').style.display = 'none';
+                return;
+            }
 
             try {
                 // URL du script web Google Apps (à remplacer par l'URL de votre script déployé)
                 const scriptUrl = 'https://script.google.com/macros/s/AKfycbwW6WF6Ro4lkFEwqKQIkGzhnpIHkCjk9LFl8jv0olZs7JJUZ4E5rikd4SMsv1b__gUj/exec';
                 const response = await fetch(`${scriptUrl}?id=${id}`);
                 const data = await response.json();
+
+                console.log(data);
                 
                 // Remplir les informations
                 document.getElementById('userName').textContent = data.name;
@@ -228,6 +326,9 @@
                 }
             } catch (error) {
                 console.error('Erreur lors du chargement des données:', error);
+            } finally {
+                // Hide loader when done, regardless of success or failure
+                document.getElementById('loader').style.display = 'none';
             }
         }
 
